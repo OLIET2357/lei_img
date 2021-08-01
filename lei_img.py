@@ -22,3 +22,17 @@ def lei_img(FILE):
         b = (word & 0b0000000000011111) >> 0 << 3
         img[i//WIDTH, i % WIDTH] = [b, g, r]
     return img
+
+
+def main(FILE):
+    img = lei_img(FILE)
+    cv2.imwrite(FILE+'.jpg', img)  # ,[cv2.IMWRITE_JPEG_QUALITY,10]
+    cv2.imshow(FILE, img)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv[1])
